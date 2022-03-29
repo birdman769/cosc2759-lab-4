@@ -23,9 +23,15 @@ jobs:
 
       - run: npm clean-install
 
+      # runs lint test
       - name: Run Lint
-      
         run: npm run lint
+
+      # runs unit tests
+      - name: Run unit tests(all)
+        run: npm run unit-tests 
+      
+
 
       - if: github.ref == 'refs/heads/main'
         run: npm pack

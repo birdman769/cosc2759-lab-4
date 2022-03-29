@@ -116,3 +116,5 @@ jobs:
           nodejsscan -d . -o sast-output.json
       
       - run: cat sast-output.json
+
+      - run: exit $(cat sast-output.json | jq .total_count.sec)

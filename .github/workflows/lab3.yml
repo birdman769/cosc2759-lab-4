@@ -30,9 +30,25 @@ jobs:
       # runs unit tests
       - name: Run unit tests(all)
         run: npm run unit-tests 
+
+      # upload coverage
       
       - name: upload the UT coverage
         uses: actions/upload-artifact@v3
+        with:
+          name: ut-coverage-${{ github.sha }}
+          path: ./coverage  
+
+        # validate coverage
+      - name: Validate Coverage
+        uses: codecov/codecov-action@v2
+        with:
+          directory: ./coverage
+          files: coverage-final.json
+          fail_ci_if_error: true
+          flags: unittests
+          verbose: true
+          dry_run: true
       
 
 

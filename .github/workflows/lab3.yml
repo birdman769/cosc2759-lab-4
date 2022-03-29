@@ -10,9 +10,7 @@ on:
       - main
 
 jobs:
-  
   ci-unit-test:
-    
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -41,8 +39,8 @@ jobs:
           name: ut-coverage-${{ github.sha }}
           path: ./coverage  
 
-        # validathttps://classroom.github.com/a/f4UhorMp idate Coverage
-      -name: Validate Coverage
+        # validate coverage
+      - name: Validate Coverage
         uses: codecov/codecov-action@v2
         with:
           directory: ./coverage

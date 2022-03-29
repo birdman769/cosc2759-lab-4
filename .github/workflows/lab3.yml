@@ -55,6 +55,7 @@ jobs:
 
   # Job 2 for integration test
   ci-integration-test:
+    needs: ci-unit-test
     runs-on: ubuntu-latest
     services:
       mongodb:
@@ -92,6 +93,7 @@ jobs:
 
   #ci-SAST test
   ci-sast:
+    needs: ci-unit-test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -116,6 +118,7 @@ jobs:
 
   # ci-package job
   ci-package:
+    needs: ci-integration-test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

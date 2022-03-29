@@ -43,13 +43,13 @@ jobs:
 
         # validathttps://classroom.github.com/a/f4UhorMp idate Coverage
         uses: codecov/codecov-action@v2
-          with:
-            directory: ./coverage
-            files: coverage-final.json
-            fail_ci_if_error: true
-            flags: unittests
-            verbose: true
-            dry_run: true
+        with:
+          directory: ./coverage
+          files: coverage-final.json
+          fail_ci_if_error: true
+          flags: unittests
+          verbose: true
+          dry_run: true
       
 
 

@@ -91,3 +91,11 @@ jobs:
         env:
           MONGO_URL: mongodb://localhost:27017/todos
           APP_PORT: 2000
+
+       # upload coverage
+      
+      - name: upload the IT coverage
+        uses: actions/upload-artifact@v3
+        with:
+          name: it-coverage-${{ github.sha }}
+          path: ./coverage  

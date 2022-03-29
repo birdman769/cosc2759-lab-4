@@ -79,3 +79,4 @@ jobs:
         run: npm run integration-tests
         env:
           MONGO_URL: mongodb://localhost:27017/todos
+          APP_PORT: 2000

@@ -65,6 +65,7 @@ jobs:
 
   # Job 2 for integration test
   ci-integration-test:
+    if: false 
     runs-on: ubuntu-latest
     services:
       mongodb:

@@ -46,7 +46,7 @@ jobs:
         with:
           directory: ./coverage
           files: coverage-final.json
-          fail_ci_if_error: true
+          fail_ci_if_error: trueif: false 
           flags: unittests
           verbose: true
           dry_run: true

@@ -64,7 +64,7 @@ jobs:
 
 
   # Job 2 for integration test
-  ci-integraiton-test:
+  ci-integration-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -75,8 +75,8 @@ jobs:
           cache: "npm"
       - run: npm clean-install
 
-      -name: running integration test
-      
-       run: npm run integration-tests
-        env:
-          MONGO_URL: mongodb://localhost:27017/todos
+      - name: running integration test
+
+        run: npm run integration-tests
+          env:
+            MONGO_URL: mongodb://localhost:27017/todos

@@ -10,8 +10,9 @@ on:
       - main
 
 jobs:
-  if: false 
+  
   ci-unit-test:
+    if: false 
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

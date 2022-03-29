@@ -35,7 +35,7 @@ jobs:
       # upload coverage
       
       - name: upload the UT coverage
-        uses: actions/upload-artifact@v3if: false 
+        uses: actions/upload-artifact@v3
         with:
           name: ut-coverage-${{ github.sha }}
           path: ./coverage  
@@ -55,7 +55,7 @@ jobs:
 
       - if: github.ref == 'refs/heads/main'
         run: npm pack
-if: false 
+      if: false 
       - if: github.ref == 'refs/heads/main'
         uses: actions/upload-artifact@v3
         with:
@@ -66,7 +66,7 @@ if: false
   # Job 2 for integration test
   ci-integration-test:
     if: false 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latestif: false 
     services:
       mongodb:
         image: mongo:4.0
@@ -101,7 +101,7 @@ if: false
           name: it-coverage-${{ github.sha }}
           path: ./coverage  
   
-  # Job 3 for security test
+  # Job 3 for test
   ci-sast:
     runs-on: ubuntu-latest
     steps:

@@ -24,7 +24,9 @@ jobs:
 
       - run: npm clean-install
 
-      # - run: npm run lint
+      - name: Run Lint
+      
+        run: npm run lint
 
       - if: github.ref == 'refs/heads/main'
         run: npm pack

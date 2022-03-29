@@ -53,15 +53,6 @@ jobs:
       
 
 
-      - if: github.ref == 'refs/heads/main'
-        run: npm pack
-
-      - if: github.ref == 'refs/heads/main'
-        uses: actions/upload-artifact@v3
-        with:
-          name: node-todo-${{ github.sha }}
-          path: ./*.tgz
-
 
   # Job 2 for integration test
   ci-integration-test:
@@ -137,3 +128,12 @@ jobs:
           node-version: "16"
           cache: "npm"
       - run: npm clean-install
+
+      # - if: github.ref == 'refs/heads/main'
+      - run: npm pack
+
+      # - if: github.ref == 'refs/heads/main'
+        uses: actions/upload-artifact@v3
+        with:
+          name: node-todo-${{ github.sha }}
+          path: ./*.tgz

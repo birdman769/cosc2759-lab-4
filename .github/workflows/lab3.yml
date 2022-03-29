@@ -42,6 +42,7 @@ jobs:
           path: ./coverage  
 
         # validathttps://classroom.github.com/a/f4UhorMp idate Coverage
+      -name: Validate Coverage
         uses: codecov/codecov-action@v2
         with:
           directory: ./coverage

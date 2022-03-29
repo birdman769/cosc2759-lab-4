@@ -74,3 +74,9 @@ jobs:
           node-version: "16"
           cache: "npm"
       - run: npm clean-install
+
+      -name: running integration test
+      
+      - run: npm run integration-tests
+          env:
+            MONGO_URL: mongodb://localhost:27017/todos

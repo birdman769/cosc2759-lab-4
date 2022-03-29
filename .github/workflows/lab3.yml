@@ -66,6 +66,16 @@ jobs:
   # Job 2 for integration test
   ci-integration-test:
     runs-on: ubuntu-latest
+    services:
+      mongodb:
+        image: mongo:4.0
+        options: >-
+          --health-cmd mongo
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 27017:27017
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js 16.x
@@ -75,17 +85,7 @@ jobs:
           cache: "npm"
       - run: npm clean-install
 
-      services:
-        mongodb:
-          image: mongo:4.0
-          options: >-
-            --health-cmd mongo
-            --health-interval 10s
-            --health-timeout 5s
-            --health-retries 5
-          ports:
-            - 27017:27017
-
+     
       - name: running integration test
         run: npm run integration-tests
         env:

@@ -99,3 +99,19 @@ jobs:
         with:
           name: it-coverage-${{ github.sha }}
           path: ./coverage  
+
+  #ci-SAST test
+  ci-sast:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install NodeJsScan
+        run: |
+          sudo apt-get update
+          sudo apt-get install python3-pip
+          pip3 install nodejsscan
+      - name: Execute Node Scan
+        run: |
+          nodejsscan -d . -o sast-output.json
+      
+      - run: cat sast-output.json

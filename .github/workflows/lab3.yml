@@ -118,3 +118,9 @@ jobs:
       - run: cat sast-output.json
 
       - run: exit $(cat sast-output.json | jq .total_count.sec)
+    # create the SAST ARTIFACT
+      - name: upload the SAST to json
+        uses: actions/upload-artifact@v3
+        with:
+          name: sast-coverage-${{ github.sha }}
+          path: sast-output.json

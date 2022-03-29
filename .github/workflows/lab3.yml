@@ -53,15 +53,6 @@ jobs:
       
 
 
-      - if: github.ref == 'refs/heads/main'
-        run: npm pack
-
-      - if: github.ref == 'refs/heads/main'
-        uses: actions/upload-artifact@v3
-        with:
-          name: node-todo-${{ github.sha }}
-          path: ./*.tgz
-
 
   # Job 2 for integration test
   ci-integration-test:
@@ -103,6 +94,7 @@ jobs:
 
   #ci-SAST test
   ci-sast:
+    if: false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -124,3 +116,24 @@ jobs:
         with:
           name: sast-coverage-${{ github.sha }}
           path: sast-output.json
+
+  # ci-package job
+  ci-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+          cache: "npm"
+      - run: npm clean-install
+
+      - if: github.ref == 'refs/heads/main'
+        run: npm pack
+
+      - if: github.ref == 'refs/heads/main'
+        uses: actions/upload-artifact@v3
+        with:
+          name: node-todo-${{ github.sha }}
+          path: ./*.tgz

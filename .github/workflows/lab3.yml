@@ -55,7 +55,7 @@ jobs:
 
       - if: github.ref == 'refs/heads/main'
         run: npm pack
-      if: false 
+
       - if: github.ref == 'refs/heads/main'
         uses: actions/upload-artifact@v3
         with:
@@ -65,8 +65,7 @@ jobs:
 
   # Job 2 for integration test
   ci-integration-test:
-    if: false 
-    runs-on: ubuntu-latestif: false 
+    runs-on: ubuntu-latest
     services:
       mongodb:
         image: mongo:4.0
@@ -100,19 +99,3 @@ jobs:
         with:
           name: it-coverage-${{ github.sha }}
           path: ./coverage  
-  
-  # Job 3 for test
-  ci-sast:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Install NodeJsScan
-        run: |
-          sudo apt-get update
-          sudo apt-get install python3-pip
-          pip3 install nodejsscan
-      - name: Execute Node Scan
-        run: |
-          nodejsscan -d . -o sast-output.json
-      
-      - run: cat sast-output.json
